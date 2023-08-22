@@ -8,9 +8,9 @@ import helmet from "helmet";
 import morgan from "morgan";
 import path from "path";
 import {fileURLToPath} from "url";
-import {register} from "./controllers/auth";
+import {register} from "./controllers/auth.js";
 
-/* CONFIGURATIONS*/
+/* CONFIGURATIONS */
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 dotenv.config();
@@ -38,7 +38,6 @@ const storage = multer.diskStorage({
 const upload = multer({storage});
 
 /* FILE STORAGE */
-
 app.post("/auth/register", upload.single("picture"), register);
 
 /*MONGOOSE SETUP*/
